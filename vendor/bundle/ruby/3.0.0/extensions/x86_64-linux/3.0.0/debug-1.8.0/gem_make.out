@@ -1,0 +1,16 @@
+current directory: /home/klaudia-szczepocka/SecureEntry/vendor/bundle/ruby/3.0.0/gems/debug-1.8.0/ext/debug
+/home/klaudia-szczepocka/.asdf/installs/ruby/3.0.0/bin/ruby -I /home/klaudia-szczepocka/.asdf/installs/ruby/3.0.0/lib/ruby/3.0.0 -r ./siteconf20231125-7632-xtwd7m.rb extconf.rb
+creating Makefile
+
+current directory: /home/klaudia-szczepocka/SecureEntry/vendor/bundle/ruby/3.0.0/gems/debug-1.8.0/ext/debug
+make "DESTDIR=" clean
+
+current directory: /home/klaudia-szczepocka/SecureEntry/vendor/bundle/ruby/3.0.0/gems/debug-1.8.0/ext/debug
+make "DESTDIR="
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/klaudia-szczepocka/SecureEntry/vendor/bundle/ruby/3.0.0/gems/debug-1.8.0/ext/debug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20231125-7632-473n8k/debug

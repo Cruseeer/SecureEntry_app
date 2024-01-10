@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Lost cards</h1>
+
+<div id="lost_cards">
+  <% @lost_cards.each do |lost_card| %>
+    <%= render lost_card %>
+    <p>
+      <%= link_to "Show this lost card", lost_card %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New lost card", new_lost_card_path %>

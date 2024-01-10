@@ -1,0 +1,2 @@
+module LostCardsHelper
+end

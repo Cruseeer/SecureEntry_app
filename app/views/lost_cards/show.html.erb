@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @lost_card %>
+
+<div>
+  <%= link_to "Edit this lost card", edit_lost_card_path(@lost_card) %> |
+  <%= link_to "Back to lost cards", lost_cards_path %>
+
+  <%= button_to "Destroy this lost card", @lost_card, method: :delete %>
+</div>

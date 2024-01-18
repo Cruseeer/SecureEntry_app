@@ -16,7 +16,7 @@
   <header>
     <% if session[:user_id] %>
       <p>Zalogowany jako: <%= current_user.login %></p>
-      <%= link_to 'Wyloguj', logout_path, method: :delete %>
+      <%= link_to 'Wyloguj', logout_path, method: :delete, data: { confirm: 'Czy na pewno chcesz się wylogować?' } %>
     <% else %>
       <%= link_to 'Zaloguj się', login_path %>
       <%= link_to 'Zarejestruj się', signup_path %>

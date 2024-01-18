@@ -8,7 +8,18 @@
     <!-- Dodaj tutaj zawartość widoku dla administratora -->
   <% else %>
     <p>Witaj użytkowniku!</p>
-    <!-- Dodaj tutaj zawartość widoku dla użytkownika -->
+
+    <h1>Pomieszczenia do których masz dostęp:</h1>
+
+    <% if @rooms && @rooms.any? %>
+      <ul>
+        <% @rooms.each do |room| %>
+          <li><%= room.name %></li>
+    <% end %>
+      </ul>
+    <% else %>
+      <p>Nie masz dostępu do żadnych pomieszczeń.</p>
+    <% end %>
   <% end %>
   <% else %>
     <p>Aby korzystać z aplikacji, zaloguj się lub zarejestruj.</p>

@@ -1,8 +1,10 @@
+<!-- app/views/layouts/application.html.erb -->
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>SecureEntry</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,6 +13,17 @@
   </head>
 
   <body>
+  <header>
+    <% if session[:user_id] %>
+      <p>Zalogowany jako: <%= current_user.login %></p>
+      <%= link_to 'Wyloguj', logout_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Zaloguj się', login_path %>
+      <%= link_to 'Zarejestruj się', signup_path %>
+    <% end %>
+  </header>
+
+
     <%= yield %>
   </body>
 </html>

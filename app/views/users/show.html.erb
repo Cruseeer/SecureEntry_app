@@ -1,10 +1,9 @@
-<p style="color: green"><%= notice %></p>
+<!-- app/views/users/show.html.erb -->
 
-<%= render @user %>
+<h2>Profil użytkownika</h2>
 
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
+<p><strong>Email:</strong> <%= @user.login %></p>
+<p><strong>Nazwa:</strong> <%= @user.name %></p>
 
-  <%= button_to "Destroy this user", @user, method: :delete %>
-</div>
+<%= link_to 'Edytuj profil', edit_user_path(@user) %>
+<%= link_to 'Usuń konto', user_path(@user), method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć swoje konto?' } %>

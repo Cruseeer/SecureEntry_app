@@ -1,6 +1,10 @@
 class LostCardsController < ApplicationController
   before_action :set_lost_card, only: %i[ show edit update destroy ]
 
+  def all_lost_cards
+    @all_lost_cards = LostCard.all
+  end
+
   # GET /lost_cards or /lost_cards.json
   def index
     @lost_cards = LostCard.all
@@ -52,7 +56,7 @@ class LostCardsController < ApplicationController
     @lost_card.destroy!
 
     respond_to do |format|
-      format.html { redirect_to lost_cards_url, notice: "Lost card was successfully destroyed." }
+      format.html { redirect_to all_lost_cards_path, notice: "Zgłoszenie zgubionej karty zostało usunięte." }
       format.json { head :no_content }
     end
   end

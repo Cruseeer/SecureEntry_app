@@ -1,0 +1,16 @@
+<h1>Wszystkie zgubione karty</h1>
+
+<% if @all_lost_cards && @all_lost_cards.any? %>
+  <ul>
+    <% @all_lost_cards.each do |lost_card| %>
+      <li>
+        <p>User: <%= lost_card.user.login %></p>
+        <p>Data zgubienia: <%= lost_card.created_at %></p>
+
+        <%= button_to 'Usuń zgłoszenie', lost_card, method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć to zgłoszenie?' }, class: 'btn btn-danger' %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Brak zgłoszeń zgubionych kart.</p>
+<% end %>

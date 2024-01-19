@@ -6,6 +6,8 @@
   <% if current_user.isadmin %>
     <p>Witaj adminie!</p>
     <!-- Dodaj tutaj zawartość widoku dla administratora -->
+    <%= link_to 'Panel zarządzania użytkownikami', admin_users_path, class: 'btn btn-primary' %><br>
+    <%= link_to "Zgubione karty", '/lost_cards/all_lost_cards' %>
   <% else %>
     <p>Witaj użytkowniku!</p>
 
@@ -15,12 +17,23 @@
       <ul>
         <% @rooms.each do |room| %>
           <li><%= room.name %></li>
-    <% end %>
+        <% end %>
       </ul>
+
+      <%= form_with(url: '/report_lost_card', method: 'post') do |form| %>
+        <%= form.submit 'Zgłoś zgubienie karty' %>
+      <% end %>
+
+      <% if flash[:alert] %>
+        <p><%= flash[:alert] %></p>
+      <% elsif flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
+
     <% else %>
       <p>Nie masz dostępu do żadnych pomieszczeń.</p>
     <% end %>
   <% end %>
-  <% else %>
-    <p>Aby korzystać z aplikacji, zaloguj się lub zarejestruj.</p>
+<% else %>
+  <p>Aby korzystać z aplikacji, zaloguj się lub zarejestruj.</p>
 <% end %>

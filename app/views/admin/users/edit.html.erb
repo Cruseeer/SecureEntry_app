@@ -1,0 +1,22 @@
+<!-- app/views/admin/users/edit.html.erb -->
+<h1>Edytuj Użytkownika</h1>
+
+<%= form_with(model: @user, local: true) do |f| %>
+ <%= f.label :name, 'Nazwa użytkownika:' %>
+  <%= f.text_field :name %>
+
+  <%= f.label :login, 'Email:' %>
+  <%= f.email_field :login %>
+
+  <%= f.label :password, 'Hasło:' %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation, 'Potwierdź hasło:' %>
+  <%= f.password_field :password_confirmation %>
+
+  <%= f.label :isadmin, 'Administrator' %>
+  <%= f.check_box :isadmin %>
+
+
+  <%= f.submit 'Zapisz zmiany' %>
+<% end %>

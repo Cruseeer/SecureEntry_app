@@ -1,0 +1,16 @@
+<!-- app/views/lost_cards/_lost_card.html.erb -->
+
+<h1>Wszystkie zgubione karty</h1>
+
+<% if @all_lost_cards.any? %>
+  <ul>
+    <% @all_lost_cards.each do |lost_card| %>
+      <li>
+        <p>User: <%= lost_card.user.name %></p>
+        <p>Data zgubienia: <%= lost_card.created_at %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Brak zgłoszeń zgubionych kart.</p>
+<% end %>

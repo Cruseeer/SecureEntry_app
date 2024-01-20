@@ -1,39 +1,47 @@
-<!-- app/views/home/index.html.erb -->
+<div class="container mt-4">
+  <h1 class="display-4 text-center mb-4">Witaj w SecureEntry!</h1>
 
-<h1>Witaj w SecureEntry!</h1>
-
-<% if user_signed_in? %>
-  <% if current_user.isadmin %>
-    <p>Witaj adminie!</p>
-    <!-- Dodaj tutaj zawartość widoku dla administratora -->
-    <%= link_to 'Panel zarządzania użytkownikami', admin_users_path, class: 'btn btn-primary' %><br>
-    <%= link_to "Zgubione karty", '/lost_cards/all_lost_cards' %>
-  <% else %>
-    <p>Witaj użytkowniku!</p>
-
-    <h1>Pomieszczenia do których masz dostęp:</h1>
-
-    <% if @rooms && @rooms.any? %>
-      <ul>
-        <% @rooms.each do |room| %>
-          <li><%= room.name %></li>
-        <% end %>
-      </ul>
-
-      <%= form_with(url: '/report_lost_card', method: 'post') do |form| %>
-        <%= form.submit 'Zgłoś zgubienie karty' %>
-      <% end %>
-
-      <% if flash[:alert] %>
-        <p><%= flash[:alert] %></p>
-      <% elsif flash[:notice] %>
-        <p><%= flash[:notice] %></p>
-      <% end %>
+  <% if user_signed_in? %>
+    <% if current_user.isadmin %>
+      <div class="alert alert-info text-center py-4">
+        <h4 class="alert-heading">Panel Administratora</h4>
+        <p>Zarządzaj użytkownikami i zgłoszeniami zgubionych kart.</p>
+        <hr>
+        <%= link_to 'Panel zarządzania użytkownikami', admin_users_path, class: 'btn btn-primary btn-lg my-2 mx-1' %>
+        <%= link_to 'Zgubione karty', '/lost_cards/all_lost_cards', class: 'btn btn-secondary btn-lg my-2 mx-1' %>
+      </div>
 
     <% else %>
-      <p>Nie masz dostępu do żadnych pomieszczeń.</p>
+      <div class="alert alert-success">
+        <p class="lead text-center">Witaj użytkowniku!</p>
+
+        <h2 class="mb-3 text-center">Pomieszczenia do których masz dostęp:</h2>
+
+        <% if @rooms && @rooms.any? %>
+          <ul class="list-group mb-3">
+            <% @rooms.each do |room| %>
+              <li class="list-group-item"><%= room.name %></li>
+            <% end %>
+          </ul>
+
+          <%= form_with(url: '/report_lost_card', method: 'post', class: 'mb-3') do |form| %>
+            <%= form.submit 'Zgłoś zgubienie karty', class: 'btn btn-warning btn-block' %>
+          <% end %>
+
+          <% if flash[:alert] %>
+            <div class="alert alert-danger"><%= flash[:alert] %></div>
+          <% elsif flash[:notice] %>
+            <div class="alert alert-success"><%= flash[:notice] %></div>
+          <% end %>
+
+        <% else %>
+          <p class="text-center">Nie masz dostępu do żadnych pomieszczeń.</p>
+        <% end %>
+      </div>
     <% end %>
+  <% else %>
+    <div class="alert alert-primary text-center">
+      <p>Aby korzystać z aplikacji, <a href="/login" class="alert-link">zaloguj się</a> lub <a href="/signup" class="alert-link">zarejestruj.</a></p>
+    </div>
   <% end %>
-<% else %>
-  <p>Aby korzystać z aplikacji, zaloguj się lub zarejestruj.</p>
-<% end %>
+</div>

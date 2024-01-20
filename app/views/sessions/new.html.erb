@@ -1,12 +1,28 @@
 <!-- app/views/sessions/new.html.erb -->
-<h2>Zaloguj się</h2>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card border-0 shadow">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Zaloguj się</h2>
+          
+          <%= form_tag login_path, class: 'needs-validation', novalidate: true do %>
+            <div class="form-group mb-3">
+              <%= label_tag :login, 'Email:', class: 'form-label' %>
+              <%= text_field_tag :login, nil, class: 'form-control', placeholder: 'Wpisz email', required: true %>
+            </div>
 
-<%= form_tag login_path do %>
-  <label for="login">Email:</label>
-  <%= text_field_tag :login %>
+            <div class="form-group mb-3">
+              <%= label_tag :password, 'Hasło:', class: 'form-label' %>
+              <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Wpisz hasło', required: true %>
+            </div>
 
-  <label for="password">Hasło:</label>
-  <%= password_field_tag :password %>
-
-  <%= submit_tag 'Zaloguj się' %>
-<% end %>
+            <div class="text-center">
+              <%= submit_tag 'Zaloguj się', class: 'btn btn-primary btn-block' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

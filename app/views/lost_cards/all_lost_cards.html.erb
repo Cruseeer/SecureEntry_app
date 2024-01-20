@@ -1,16 +1,30 @@
-<h1>Wszystkie zgubione karty</h1>
+<div class="container mt-4">
+  <h1 class="mb-3 text-center">Wszystkie zgubione karty</h1>
 
-<% if @all_lost_cards && @all_lost_cards.any? %>
-  <ul>
-    <% @all_lost_cards.each do |lost_card| %>
-      <li>
-        <p>User: <%= lost_card.user.login %></p>
-        <p>Data zgubienia: <%= lost_card.created_at %></p>
-
-        <%= button_to 'Usuń zgłoszenie', lost_card, method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć to zgłoszenie?' }, class: 'btn btn-danger' %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>Brak zgłoszeń zgubionych kart.</p>
-<% end %>
+  <% if @all_lost_cards && @all_lost_cards.any? %>
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>User</th>
+          <th>Data zgubienia</th>
+          <th>Akcje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @all_lost_cards.each do |lost_card| %>
+          <tr>
+            <td><%= lost_card.user.login %></td>
+            <td><%= lost_card.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+            <td>
+              <%= button_to 'Usuń zgłoszenie', lost_card, method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć to zgłoszenie?' }, class: 'btn btn-danger btn-sm' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="alert alert-info text-center">
+      <p>Brak zgłoszeń zgubionych kart.</p>
+    </div>
+  <% end %>
+</div>

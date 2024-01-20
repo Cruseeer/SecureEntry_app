@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :login, presence: true, uniqueness: true
   validates :name, presence: true, uniqueness: true
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   # Metoda autentykacyjna
   def self.authenticate(login, password)

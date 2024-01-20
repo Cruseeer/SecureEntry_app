@@ -1,16 +1,22 @@
 <!-- app/views/lost_cards/_lost_card.html.erb -->
 
-<h1>Wszystkie zgubione karty</h1>
+<div class="container mt-4">
+  <h1 class="mb-3 text-center">Wszystkie zgubione karty</h1>
 
-<% if @all_lost_cards.any? %>
-  <ul>
-    <% @all_lost_cards.each do |lost_card| %>
-      <li>
-        <p>User: <%= lost_card.user.name %></p>
-        <p>Data zgubienia: <%= lost_card.created_at %></p>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>Brak zgłoszeń zgubionych kart.</p>
-<% end %>
+  <% if @all_lost_cards.any? %>
+    <div class="list-group">
+      <% @all_lost_cards.each do |lost_card| %>
+        <div class="list-group-item list-group-item-action flex-column align-items-start mb-2">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">User: <%= lost_card.user.name %></h5>
+            <small>Data zgubienia: <%= lost_card.created_at.strftime("%Y-%m-%d %H:%M") %></small>
+          </div>
+          <p class="mb-1">Szczegóły zgubienia...</p>
+          <%= link_to 'Zobacz więcej', lost_card_path(lost_card), class: 'btn btn-primary btn-sm' %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-center">Brak zgłoszeń zgubionych kart.</p>
+  <% end %>
+</div>

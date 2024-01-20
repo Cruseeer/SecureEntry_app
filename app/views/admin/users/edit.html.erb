@@ -1,22 +1,39 @@
 <!-- app/views/admin/users/edit.html.erb -->
-<h1>Edytuj Użytkownika</h1>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="card-title">Edytuj Użytkownika</h1>
+        </div>
+        <div class="card-body">
+          <%= form_with(model: @user, local: true) do |f| %>
+            <div class="form-group">
+              <%= f.label :name, 'Nazwa użytkownika:', class: 'control-label' %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
 
-<%= form_with(model: @user, local: true) do |f| %>
- <%= f.label :name, 'Nazwa użytkownika:' %>
-  <%= f.text_field :name %>
+            <div class="form-group">
+              <%= f.label :login, 'Email:', class: 'control-label' %>
+              <%= f.email_field :login, class: 'form-control' %>
+            </div>
 
-  <%= f.label :login, 'Email:' %>
-  <%= f.email_field :login %>
+            <div class="form-group">
+              <%= f.label :password, 'Hasło:', class: 'control-label' %>
+              <%= f.password_field :password, class: 'form-control', placeholder: 'Pozostaw puste, aby nie zmieniać' %>
+            </div>
 
-  <%= f.label :password, 'Hasło:' %>
-  <%= f.password_field :password %>
+            <div class="form-group">
+              <%= f.label :password_confirmation, 'Potwierdź hasło:', class: 'control-label' %>
+              <%= f.password_field :password_confirmation, class: 'form-control' %>
+            </div>
 
-  <%= f.label :password_confirmation, 'Potwierdź hasło:' %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.label :isadmin, 'Administrator' %>
-  <%= f.check_box :isadmin %>
-
-
-  <%= f.submit 'Zapisz zmiany' %>
-<% end %>
+            <div class="form-group">
+              <%= f.submit 'Zapisz zmiany', class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

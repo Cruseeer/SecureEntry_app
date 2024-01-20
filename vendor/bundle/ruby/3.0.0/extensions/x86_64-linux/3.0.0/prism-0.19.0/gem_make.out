@@ -1,0 +1,43 @@
+current directory: /home/klaudia-szczepocka/secureentry_app/vendor/bundle/ruby/3.0.0/gems/prism-0.19.0/ext/prism
+/home/klaudia-szczepocka/.asdf/installs/ruby/3.0.0/bin/ruby -I /home/klaudia-szczepocka/.asdf/installs/ruby/3.0.0/lib/ruby/3.0.0 -r ./siteconf20240119-32908-wafuzp.rb extconf.rb
+checking for prism.h in /home/klaudia-szczepocka/secureentry_app/vendor/bundle/ruby/3.0.0/gems/prism-0.19.0/include... yes
+checking for prism/extension.h in /home/klaudia-szczepocka/secureentry_app/vendor/bundle/ruby/3.0.0/gems/prism-0.19.0/ext... yes
+checking for whether -fvisibility=hidden is accepted as CFLAGS... yes
+compiling build/static/node.o
+compiling build/static/util/pm_memchr.o
+compiling build/static/util/pm_list.o
+compiling build/static/util/pm_newline_list.o
+compiling build/static/util/pm_string.o
+compiling build/static/util/pm_state_stack.o
+compiling build/static/util/pm_strncasecmp.o
+compiling build/static/util/pm_constant_pool.o
+compiling build/static/util/pm_buffer.o
+compiling build/static/util/pm_strpbrk.o
+compiling build/static/util/pm_char.o
+compiling build/static/util/pm_string_list.o
+compiling build/static/prism.o
+compiling build/static/prettyprint.o
+compiling build/static/pack.o
+compiling build/static/serialize.o
+compiling build/static/regexp.o
+compiling build/static/options.o
+compiling build/static/diagnostic.o
+compiling build/static/encoding.o
+compiling build/static/token_type.o
+building build/libprism.a
+ar: tworzenie build/libprism.a
+creating Makefile
+
+current directory: /home/klaudia-szczepocka/secureentry_app/vendor/bundle/ruby/3.0.0/gems/prism-0.19.0/ext/prism
+make "DESTDIR=" clean
+
+current directory: /home/klaudia-szczepocka/secureentry_app/vendor/bundle/ruby/3.0.0/gems/prism-0.19.0/ext/prism
+make "DESTDIR="
+compiling api_node.c
+compiling api_pack.c
+compiling extension.c
+linking shared-object prism/prism.so
+
+current directory: /home/klaudia-szczepocka/secureentry_app/vendor/bundle/ruby/3.0.0/gems/prism-0.19.0/ext/prism
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 prism.so ./.gem.20240119-32908-bppjpt/prism

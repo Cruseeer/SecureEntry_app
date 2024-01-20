@@ -10,18 +10,37 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <!-- Dodaj link do Bootstrap CSS -->
+    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" %>
+
+    <!-- Dodaj styl dla logo -->
+    <style>
+      .logo {
+        width: 100px; /* Dostosuj szerokość logo według potrzeb */
+        height: auto;
+        margin-right: 10px; /* Dodaj margines z prawej strony logo */
+      }
+    </style>
   </head>
 
   <body>
-  <header>
-    <% if session[:user_id] %>
-      <p>Zalogowany jako: <%= current_user.login %></p>
-      <%= link_to 'Wyloguj', logout_path, method: :delete, data: { confirm: 'Czy na pewno chcesz się wylogować?' } %>
-    <% else %>
-      <%= link_to 'Zaloguj się', login_path %>
-      <%= link_to 'Zarejestruj się', signup_path %>
+   <header class="navbar navbar-light" style="background-color: #dde6f0;">
+  <div class="container">
+    <%= link_to root_path do %>
+    <img src="<%= asset_path('logo.png') %>" alt="Logo" class="logo">
     <% end %>
-  </header>
+
+
+    <% if session[:user_id] %>
+      <p class="text-dark">Zalogowany jako: <%= current_user.login %></p>
+      <%= link_to 'Wyloguj', logout_path, method: :delete, data: { confirm: 'Czy na pewno chcesz się wylogować?' }, class: "btn btn-outline-danger" %>
+    <% else %>
+      <%= link_to 'Zaloguj się', login_path, class: "btn btn-outline-primary" %>
+      <%= link_to 'Zarejestruj się', signup_path, class: "btn btn-outline-success" %>
+    <% end %>
+  </div>
+</header>
 
 
     <%= yield %>

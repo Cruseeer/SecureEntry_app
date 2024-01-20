@@ -1,21 +1,45 @@
 <!-- app/views/admin/users/new.html.erb -->
-<%= form_with model: @user, url: admin_users_path, local: true do |f| %>
-  <%= f.label :name, 'Nazwa użytkownika:' %>
-  <%= f.text_field :name %>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-3">Utwórz nowego użytkownika</h2>
+          
+          <%= form_with model: @user, url: admin_users_path, local: true do |f| %>
+            <div class="form-group mb-2">
+              <%= f.label :name, 'Nazwa użytkownika:', class: 'form-label' %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
 
-  <%= f.label :login, 'Email:' %>
-  <%= f.email_field :login %>
+            <div class="form-group mb-2">
+              <%= f.label :login, 'Email:', class: 'form-label' %>
+              <%= f.email_field :login, class: 'form-control' %>
+            </div>
 
-  <%= f.label :password, 'Hasło:' %>
-  <%= f.password_field :password %>
+            <div class="form-group mb-2">
+              <%= f.label :password, 'Hasło:', class: 'form-label' %>
+              <%= f.password_field :password, class: 'form-control' %>
+            </div>
 
-  <%= f.label :password_confirmation, 'Potwierdź hasło:' %>
-  <%= f.password_field :password_confirmation %>
+            <div class="form-group mb-3">
+              <%= f.label :password_confirmation, 'Potwierdź hasło:', class: 'form-label' %>
+              <%= f.password_field :password_confirmation, class: 'form-control' %>
+            </div>
 
-  <%= f.label :isadmin, 'Administrator' %>
-  <%= f.check_box :isadmin %>
+            <div class="form-group form-check mb-3">
+              <%= f.label :isadmin, class: 'form-check-label' do %>
+                <%= f.check_box :isadmin, class: 'form-check-input' %>
+                Administrator
+              <% end %>
+            </div>
 
-  <%= f.submit 'Utwórz użytkownika' %>
-
-
-<% end %>
+            <div class="text-center">
+              <%= f.submit 'Utwórz użytkownika', class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,9 +14,12 @@ Rails.application.routes.draw do
   get '/lost_cards/all_lost_cards', to: 'lost_cards#all_lost_cards', as: 'all_lost_cards'
 
   namespace :admin do
-    get 'users/new', to: 'users#new', as: 'new_admin_user'
-    post 'users', to: 'users#create', as: 'admin_users_path'
-    get 'users/:id/edit', to: 'users#edit', as: 'edit_admin_user'
+    resources :users, except: [:show] do
+      member do
+        delete :destroy
+        get 'edit_permissions'
+      end
+    end
   end
 
 
@@ -26,10 +29,6 @@ Rails.application.routes.draw do
   resources :users
   resources :registrations, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
-
-  namespace :admin do
-    resources :users, only: [:new, :create, :index, :edit]
-  end
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
